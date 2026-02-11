@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mehul 💕 - From Sahil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ===== MUSIC - GITHUB READY ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music/our-song.mp3" type="audio/mpeg">
+        <source src="music/our-song.ogg" type="audio/ogg">
+    </audio>
+    
+    <style>
+        /* Your existing styles remain exactly the same - keeping all your beautiful CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-rose { 
+            background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 30%, #fecdd3 60%, #fef3f2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-purple { 
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 30%, #e9d5ff 60%, #fae8ff 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-blue { 
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 30%, #bfdbfe 60%, #e0f2fe 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-green { 
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 30%, #bbf7d0 60%, #ecfdf5 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-orange { 
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 30%, #fed7aa 60%, #fef3c7 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-pink { 
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 30%, #fbcfe8 60%, #fae8ff 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-teal { 
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 30%, #99f6e4 60%, #cffafe 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-red { 
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 30%, #fecaca 60%, #fef2f2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-indigo { 
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 30%, #c7d2fe 60%, #ddd6fe 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        .theme-yellow { 
+            background: linear-gradient(135deg, #fefce8 0%, #fef9c3 30%, #fef08a 60%, #fef3c7 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .music-control:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .music-control.playing {
+            animation: musicSpin 3s infinite linear;
+        }
+
+        @keyframes musicSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .music-tooltip {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .music-control:hover .music-tooltip {
+            opacity: 1;
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0;
+            animation: float 15s infinite ease-in-out;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.2); }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(0.8); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 50px 25px;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #be123c;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            animation: slideDownBounce 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 0 2px 10px rgba(190, 18, 60, 0.15);
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: #e11d48;
+            font-style: italic;
+            margin-bottom: 50px;
+            animation: fadeInUp 1.2s ease 0.3s both;
+            text-shadow: 0 1px 3px rgba(225, 29, 72, 0.1);
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #f43f5e, #be123c, #881337);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 35px rgba(244, 63, 94, 0.35);
+            animation: pulseGlow 2.5s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 20px 50px rgba(244, 63, 94, 0.5);
+            background-position: 100% 50%;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 35px rgba(244, 63, 94, 0.35); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 45px rgba(244, 63, 94, 0.5); }
+        }
+
+        .game-screen {
+            display: none;
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-radius: 35px;
+            padding: 55px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .game-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .game-instruction {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px currentColor;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .word-scramble-word {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin: 25px 0;
+            animation: letterBounce 1s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes letterBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .guess-input {
+            font-size: 1.4rem;
+            padding: 18px 30px;
+            border: 3px solid currentColor;
+            border-radius: 20px;
+            text-align: center;
+            font-family: 'Crimson Text', serif;
+            width: 100%;
+            max-width: 450px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .guess-input:focus {
+            outline: none;
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-width: 4px;
+        }
+
+        .submit-btn {
+            background: currentColor;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            width: 100%;
+        }
+
+        .choice-btn {
+            background: white;
+            border: 3px solid currentColor;
+            padding: 25px 20px;
+            font-size: 1.15rem;
+            font-family: 'Crimson Text', serif;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .choice-btn:hover {
+            background: currentColor;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .choice-btn.correct {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: white;
+            animation: correctBounce 0.8s ease;
+        }
+
+        .choice-btn.wrong {
+            animation: shake 0.6s ease;
+            border-color: #ef4444;
+        }
+
+        @keyframes correctBounce {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            75% { transform: scale(0.95) rotate(-2deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-12px); }
+            75% { transform: translateX(12px); }
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: currentColor;
+            border-radius: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card.flipped {
+            background: white;
+            border: 3px solid currentColor;
+            color: currentColor;
+            transform: rotateY(180deg);
+        }
+
+        .memory-card.matched {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: white;
+            animation: matchPulse 0.6s ease;
+        }
+
+        @keyframes matchPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .slider-container {
+            width: 100%;
+            max-width: 550px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        .slider {
+            width: 100%;
+            height: 18px;
+            border-radius: 12px;
+            outline: none;
+            -webkit-appearance: none;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: currentColor;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .slider-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        .math-problem {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 25px 0;
+            animation: numberFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes numberFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .pattern-square {
+            aspect-ratio: 1;
+            background: white;
+            border: 3px solid currentColor;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pattern-square.active {
+            background: currentColor;
+            transform: scale(1.05);
+        }
+
+        .emoji-options {
+            display: flex;
+            gap: 25px;
+            font-size: 3.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .emoji-btn {
+            cursor: pointer;
+            padding: 25px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            background: white;
+            border: 3px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .emoji-btn:hover {
+            border-color: currentColor;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .message-reveal {
+            display: none;
+            background: white;
+            padding: 45px;
+            border-radius: 25px;
+            margin-top: 35px;
+            animation: revealSlide 0.8s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .message-reveal.show {
+            display: block;
+        }
+
+        @keyframes revealSlide {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== PHOTO STYLES - WORKS WITH .jpg, .jpeg, .png, .jfif ===== */
+        .message-image {
+            width: 100%;
+            max-width: 550px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: block;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease;
+            background: linear-gradient(145deg, #f43f5e, #fb7185);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .message-image:hover {
+            transform: scale(1.02);
+        }
+
+        .final-photo-container {
+            margin: 45px 0;
+        }
+
+        .final-photo {
+            max-width: 450px;
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            transition: transform 0.5s ease;
+            display: block;
+            margin: 0 auto;
+            border: 5px solid white;
+        }
+
+        .final-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-caption {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #be123c;
+            font-style: italic;
+        }
+
+        .message-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            margin: 35px 0;
+            text-align: left;
+            color: #2d3748;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .message-text p {
+            margin-bottom: 28px;
+        }
+
+        .message-text::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .message-text::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .message-text::-webkit-scrollbar-thumb {
+            background: #e11d48;
+            border-radius: 10px;
+        }
+
+        .next-game-btn {
+            background: currentColor;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 25px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .next-game-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-screen {
+            display: none;
+            text-align: center;
+            animation: finalReveal 1.5s ease;
+        }
+
+        @keyframes finalReveal {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .final-container {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 40px;
+            padding: 70px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .final-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #be123c;
+            margin-bottom: 35px;
+            animation: heartbeat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.15); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.1); }
+            40% { transform: scale(1); }
+        }
+
+        .final-message {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: #2d3748;
+            margin: 45px 0;
+            text-align: left;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+
+        .final-message p {
+            margin-bottom: 28px;
+        }
+
+        .final-message strong {
+            color: #be123c;
+        }
+
+        .final-message em {
+            color: #e11d48;
+            font-style: italic;
+        }
+
+        .final-message::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .final-message::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .final-message::-webkit-scrollbar-thumb {
+            background: #e11d48;
+            border-radius: 10px;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            font-style: italic;
+            color: #e11d48;
+            margin-top: 45px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            animation: confetti-fall 3.5s linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hint-message {
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #4a5568;
+            border-left: 4px solid currentColor;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: #e11d48;
+            opacity: 0.7;
+        }
+
+        .message-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #be123c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* ===== GITHUB SETUP NOTE - UPDATED FOR YOUR FILE NAMES ===== */
+        .github-setup-note {
+            background: rgba(255, 255, 255, 0.95);
+            border-left: 6px solid #e11d48;
+            padding: 20px 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: left;
+            font-size: 1.1rem;
+            color: #4a5568;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .github-setup-note strong {
+            color: #be123c;
+        }
+
+        .github-setup-note code {
+            background: #fef2f2;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: #e11d48;
+            border: 1px solid #fecdd3;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 1.3rem; }
+            .game-container { padding: 35px 25px; }
+            .final-title { font-size: 3rem; }
+            .memory-grid { grid-template-columns: repeat(4, 1fr); }
+            .music-tooltip { display: none; }
+        }
+    </style>
+</head>
+<body class="theme-rose">
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()" style="color: #e11d48">
+        🎵
+        <span class="music-tooltip" id="musicTooltip">Click to play our song 💕</span>
+    </div>
+
+    <!-- Floating hearts -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <h1>For Mehul 💕</h1>
+            <p class="subtitle">From Sahil</p>
+            <button class="start-btn" onclick="startGames()">Let's Play! 💕</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="game-container">
+                <h2 class="game-title" id="gameTitle">Game 1</h2>
+                <p class="game-instruction" id="gameInstruction"></p>
+                <div class="game-area" id="gameArea"></div>
+                <div id="inlineHint" class="hint-message" style="display: none;"></div>
+                <div class="message-reveal" id="messageReveal">
+                    <!-- YOUR PHOTOS WILL LOAD HERE - Works with .jpg, .jpeg, .png, .jfif -->
+                    <img id="messageImage" class="message-image" src="" alt="Our memory 💕" loading="lazy">
+                    <div class="message-text" id="messageText"></div>
+                    <button class="next-game-btn" onclick="nextGame()">Next Game 💕</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Screen - Your beautiful words -->
+        <div class="final-screen" id="finalScreen">
+            <div class="final-container">
+                <h2 class="final-title">For You, Mehul 💝</h2>
+                <p style="font-size: 1.5rem; color: #be123c; margin-bottom: 20px;">From Sahil</p>
+                
+                <!-- YOUR FINAL PHOTO WILL LOAD HERE -->
+                <div class="final-photo-container">
+                    <img id="finalPhoto" class="final-photo" src="" alt="Us 💕" loading="lazy">
+                    <div id="photoCaption" class="photo-caption"></div>
+                </div>
+
+                <div class="final-message" id="finalMessage">
+                    <!-- Your 10 beautiful paragraphs - exactly as you wrote them -->
+                    <div class="message-number">— 1 —</div>
+                    <p>You really don't understand what your hug does to me. I'm not exaggerating when I say it changes something inside me every single time. The moment your arms come around me, it feels like the world finally quiets down. All the noise in my head, all the pressure I carry, all the things I don't say out loud… they just soften. It's like my body recognizes safety before my mind even processes it. I don't feel judged. I don't feel expected to be strong. I don't feel like I have to prove anything. I just feel held. And that feeling is rare for me. I walk around pretending I'm fine, pretending I'm stable, pretending I don't need reassurance. But when you hug me, that mask falls off without effort. I breathe differently. I hold you tighter than I should because deep down I'm scared of losing that peace. It's not just warmth. It's not just closeness. It's comfort in its purest form. Sometimes my chest feels heavy when you hold me, not in a painful way, but in an overwhelming way. Like my heart is too full. Like I don't even have words big enough to explain how much it means. If you could feel what I feel in that exact second, you'd understand why I never want to let go first.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 2 —</div>
+                    <p>There are moments when you hug me and I close my eyes for just a second longer than usual. Not because I'm tired. But because I'm trying to memorize it. The way your arms fit around me. The way your head rests against me. The way your fingers press into my back like you're afraid I might disappear. In that moment, I feel chosen. Out of everyone in this world, you chose me to hold like that. And that thought alone makes my throat tighten. I've never wanted something to last forever the way I want your hugs to. When you hold me, I don't feel alone. And that's a big thing for me. Even when I'm surrounded by people, I sometimes feel like I'm carrying things by myself. But in your arms, I feel seen without having to explain anything. You don't ask questions. You don't demand explanations. You just hold me. And somehow that silent understanding hits deeper than any conversation ever could. Sometimes I wonder if you realize that you're healing parts of me you never even broke. You're giving me a kind of comfort I didn't even know I was missing until I felt it from you.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 3 —</div>
+                    <p>Your hug feels like home. And I don't mean that in a dramatic way. I mean it in the most honest way possible. Home is supposed to be where you feel safe, accepted, and at peace. That's exactly how I feel when I'm in your arms. There are days when I'm exhausted from pretending to be strong. Days when I feel pressure from expectations, responsibilities, and my own thoughts. And then you hug me. And suddenly I don't have to carry everything alone. I don't have to be the strong one. I don't have to act like nothing bothers me. I can just exist. I can just breathe. The warmth of your hug feels like reassurance without words. Like you're silently telling me that no matter how heavy life feels, I'm not facing it alone. That kind of comfort is not something people find easily. It's not something that can be forced. It's natural. It's real. And it makes me emotional in ways I don't always show. Sometimes when I'm holding you, I feel this wave of gratitude hit me out of nowhere. Like how did I get so lucky to have someone whose embrace feels this genuine. It scares me how much it matters to me. Because once you feel this kind of peace, you never want to lose it.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 4 —</div>
+                    <p>I think what makes your hug so powerful is that it feels intentional. It doesn't feel casual. It doesn't feel forced. It feels like you're actually there with me in that moment. When you wrap your arms around me, I feel wanted. Not for what I can give. Not for what I can achieve. Not for how strong I look. Just for being me. And that hits deeper than you realize. Most of the time, love feels conditional in this world. But your hug feels pure. It feels like acceptance without requirements. There's something about the way you squeeze me tighter when you don't want me to leave that makes my heart ache in the softest way. It makes me realize how attached I am to that feeling. I replay those moments in my head when you're not around. I remember the warmth. The closeness. The silence between us that somehow says everything. And sometimes I smile thinking about it. Sometimes I just sit there missing it. Because once you've felt arms that feel like safety, distance feels heavier than usual.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 5 —</div>
+                    <p>There's a specific second during our hugs that always gets me. It's that tiny pause before we let go. That hesitation. That silent moment where neither of us moves first. In that second, I always wish time would freeze. I wish the world would stop. Because I know once we separate, reality comes back. Responsibilities come back. Distance sometimes comes back. But in that hug, none of that exists. It's just us. Just warmth. Just heartbeat against heartbeat. And I swear sometimes I can feel your heart, and it makes mine calm down automatically. It's like they sync for a moment. I don't know if that sounds dramatic, but it's real. I feel it. I think that's why your hug means more than words ever could. Words can be misunderstood. Words can be doubted. But the way you hold me can't be faked. It's honest. It's instinctive. And it makes me feel connected to you in a way that goes beyond conversation.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 6 —</div>
+                    <p>When you hug me on days I'm stressed or upset, it hits even deeper. Because you don't always know what's going on inside my head. I don't always explain everything. But you still hold me like you understand. And that silent support means more than advice ever could. Sometimes I feel like I'm carrying thoughts I don't want to burden you with. But when you pull me close, it feels like you're sharing that weight without even knowing its details. Your hug feels like protection. Like a shield from everything that feels overwhelming. And I don't take that lightly. I don't take you lightly. Because not everyone gets someone who can calm them down without speaking. Not everyone gets arms that feel like reassurance. You've become my reset button without even trying. And that's something I'll never be able to fully explain to you.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 7 —</div>
+                    <p>There are nights when I think about our hugs and my chest feels tight in the most emotional way. I remember how you lean into me. How you don't pull away too quickly. How sometimes you hold on just a little longer like you're scared of losing the moment. And it makes me realize how deeply we feel this connection. I don't say it every time, but in those hugs, I silently promise to protect what we have. Because if something as simple as holding each other can feel this meaningful, then what we share is not ordinary. It's not surface level. It's something deeper. Something rooted. And that scares me a little because I care so much. But it also makes me grateful beyond words.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 8 —</div>
+                    <p>Your hug reminds me that love doesn't always have to be loud to be powerful. It doesn't need grand gestures. It doesn't need constant declarations. Sometimes it's just two people holding each other like they matter. And when you hold me, I feel like I matter. That feeling alone could bring tears to my eyes if I let it. Because everyone wants to feel important to someone. Everyone wants to feel like their presence brings comfort. And in your arms, I feel that clearly. I feel needed. I feel valued. I feel seen. It's not dramatic. It's just honest.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 9 —</div>
+                    <p>If one day you ever doubt how much your hug means to me, I hope you remember this. It changes my entire mood. It shifts my entire mindset. It makes hard days softer. It makes good days even better. It gives me a kind of emotional stability I didn't know I needed. I don't think I'll ever get used to it. Every time feels special. Every time feels like something I want to protect. I never want your hug to become something ordinary in my life. I always want it to feel like this. Precious. Meaningful. Irreplaceable.</p>
+                    
+                    <div class="section-divider">💕</div>
+                    
+                    <div class="message-number">— 10 —</div>
+                    <p>And if I ever tear up in your arms one day, just know it won't be because I'm sad. It'll be because I feel too much at once. Gratitude. Love. Fear of losing you. Appreciation for what we have. Your hug is more than physical closeness to me. It's emotional grounding. It's reassurance. It's belonging. It's the one place where I don't feel like I have to guard myself. And in a world where I'm constantly trying to stay strong, your arms are the only place where I don't mind being soft. That's how much it means to me.</p>
+                    
+                    <div style="text-align: center; margin: 60px 0 30px 0;">
+                        <span style="font-size: 3rem;">💕</span>
+                    </div>
+                    
+                    <p style="font-size: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; color: #be123c;">With all my heart,</p>
+                    <p style="font-size: 2rem; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; color: #e11d48; margin-top: 10px;">Sahil 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== GITHUB SETUP GUIDE - UPDATED FOR YOUR EXACT FILE NAMES ===== -->
+    <div style="position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 2000; max-width: 700px; margin: 0 auto;">
+        <div class="github-setup-note" id="setupGuide">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <span style="font-size: 2rem;">🎵</span>
+                <span style="font-size: 2rem;">📸</span>
+                <span style="font-size: 1.5rem; color: #e11d48;">✅ WORKS WITH YOUR FILE NAMES!</span>
+            </div>
+            
+            <strong style="font-size: 1.2rem;">📁 Your EXACT folder structure:</strong>
+            <code style="display: block; margin: 15px 0; padding: 15px; background: white; border-radius: 12px; border: 2px solid #fecdd3; white-space: pre; overflow-x: auto;">
+your-repo/
+├── index.html (this file)
+│
+├── 📁 images/          ← ⚠️ USE THIS FOLDER NAME (not photos)
+│   ├── 1.jpg.jfif     ← Your actual file names
+│   ├── 2.jpg.jfif
+│   ├── 3.jpg.jfif
+│   ├── 4.jpg.jfif
+│   ├── 5.jpg.jfif
+│   ├── 6.jpg.jfif
+│   ├── 7.jpg.jfif
+│   ├── 8.jpg.jfif
+│   ├── 9.jpg.jfif
+│   ├── 10.jpg.jfif
+│   └── final.jpg.jfif
+│
+└── 📁 music/
+    └── our-song.mp3    ← Your song
+            </code>
+            
+            <div style="background: #fef2f2; padding: 15px; border-radius: 12px; margin: 15px 0;">
+                <strong style="color: #be123c;">✅ JUST DO THIS:</strong><br>
+                1. Create folder named <code style="background: white;">images</code> (not photos)<br>
+                2. Upload your photos with their current names (1.jpg.jfif, 2.jpg.jfif, etc.)<br>
+                3. That's it! The code already matches your exact file names 🎉
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                <button onclick="testSetup()" style="padding: 12px 25px; background: #e11d48; color: white; border: none; border-radius: 30px; cursor: pointer; flex: 1;">
+                    🔍 Test My Photos & Music
+                </button>
+                <button onclick="document.getElementById('setupGuide').style.display='none'" style="padding: 12px 25px; background: #4a5568; color: white; border: none; border-radius: 30px; cursor: pointer;">
+                    ✓ Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============ FROM SAHIL TO MEHUL 💕 ============
+        // ============ MUSIC CONTROL ============
+        const bgMusic = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicTooltip = document.getElementById('musicTooltip');
+        let musicPlaying = false;
+        let musicStarted = false;
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicControl.textContent = '🔇';
+                musicTooltip.textContent = 'Click to play our song 💕';
+                musicControl.classList.remove('playing');
+                musicPlaying = false;
+            } else {
+                let playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        musicControl.textContent = '🎵';
+                        musicTooltip.textContent = 'Now playing: Our song ✨';
+                        musicControl.classList.add('playing');
+                        musicPlaying = true;
+                        musicStarted = true;
+                    }).catch(error => {
+                        console.log("Music playback failed:", error);
+                        musicControl.textContent = '🔇';
+                        musicTooltip.textContent = 'Click to play (allow autoplay) 💕';
+                        musicPlaying = false;
+                    });
+                }
+            }
+        }
+
+        function startMusicOnInteraction() {
+            if (!musicStarted) {
+                let playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        musicControl.textContent = '🎵';
+                        musicTooltip.textContent = 'Now playing: Our song ✨';
+                        musicControl.classList.add('playing');
+                        musicPlaying = true;
+                        musicStarted = true;
+                    }).catch(error => {
+                        console.log("Autoplay blocked");
+                    });
+                }
+            }
+        }
+
+        // ============ TEST FUNCTION ============
+        function testSetup() {
+            let message = "🔍 CHECKING YOUR FILES:\n\n";
+            let allGood = true;
+            
+            // Test first photo
+            let testImg = new Image();
+            testImg.src = 'images/1.jpg.jfif';
+            if (testImg.complete) {
+                message += "✅ images/1.jpg.jfif - FOUND\n";
+            } else {
+                message += "❌ images/1.jpg.jfif - NOT FOUND\n";
+                allGood = false;
+            }
+            
+            // Test final photo
+            let finalImg = new Image();
+            finalImg.src = 'images/final.jpg.jfif';
+            if (finalImg.complete) {
+                message += "✅ images/final.jpg.jfif - FOUND\n";
+            } else {
+                message += "❌ images/final.jpg.jfif - NOT FOUND\n";
+                allGood = false;
+            }
+            
+            message += "\n📁 REMEMBER: Use folder name 'images' (not 'photos')\n";
+            message += "Your file names: 1.jpg.jfif, 2.jpg.jfif, etc.\n\n";
+            
+            if (allGood) {
+                message += "🎉 All photos found! Ready to go!";
+            } else {
+                message += "⚠️ Create '/images/' folder and add your photos there";
+            }
+            
+            alert(message);
+        }
+
+        // ============ FLOATING HEARTS ============
+        function createHearts() {
+            const heartsBg = document.getElementById('heartsBg');
+            const hearts = ['💕', '💖', '💗', '💝', '💓', '💞', '❤️', '💘'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.floor(Math.random() * 20) + 16) + 'px';
+                heart.style.animationDuration = (Math.random() * 8 + 12) + 's';
+                heartsBg.appendChild(heart);
+                setTimeout(() => heart.remove(), 20000);
+            }, 1500);
+        }
+        createHearts();
+
+        // ============ GAME DATA - USING YOUR EXACT FILE NAMES ============
+        const games = [
+            {
+                theme: 'theme-rose',
+                color: '#e11d48',
+                title: 'Game 1: Word Unscramble',
+                instruction: 'Unscramble the word!',
+                type: 'word-scramble',
+                scrambled: 'INGAMAZ',
+                answer: 'AMAZING',
+                photo: 'images/1.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Mehul, you know what's absolutely crazy? Every single time I see you, my heart does this little skip – like it's doing a happy dance and reminding me, "Hey, she's HERE! The most amazing person in my world is right in front of you!"</p>
+                <p>I want you to know something important: <strong>You are absolutely, undeniably, incredibly amazing.</strong> Not just in the obvious ways that everyone can see – your smile that lights up a room, your laugh that's genuinely contagious. But also in all those little ways that only someone close to you would notice.</p>
+                <p>The way you care about the people around you, how you remember the small details that matter – these things make you extraordinary. And I hope you never forget just how special you are. 💕</p>`
+            },
+            {
+                theme: 'theme-purple',
+                color: '#9333ea',
+                title: 'Game 2: Multiple Choice',
+                instruction: 'Pick the correct answer!',
+                type: 'multiple-choice',
+                question: 'If hugs were an Olympic sport, we would be...',
+                choices: ['Bronze medalists', 'Silver medalists', 'Gold medal champions! 🏆', 'Participants'],
+                correct: 2,
+                photo: 'images/2.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Okay, here's a little spicy truth for you... 😏</p>
+                <p>If hugs were an Olympic sport, we would absolutely, hands down, be gold medal champions. And you know what? I wouldn't even be mad about all the "training sessions" we'd have to go through.</p>
+                <p>There's something about the way we fit together that just works, you know? Like two puzzle pieces that were specifically designed for each other. And every single time I get to hold you close, it's this perfect combination of comfort, excitement, and warmth.</p>
+                <p>So yeah, if Olympic hugging was a thing, we'd be unstoppable. But honestly? I'm pretty happy just keeping this gold-medal-worthy talent between us. 😘</p>`
+            },
+            {
+                theme: 'theme-blue',
+                color: '#2563eb',
+                title: 'Game 3: Memory Match',
+                instruction: 'Find the matching pairs!',
+                type: 'memory',
+                pairs: ['💕', '💖', '💝', '💓'],
+                photo: 'images/3.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>You have this absolutely incredible, almost magical way of making everything better. And I mean <em>everything</em>.</p>
+                <p><strong>Bad day?</strong> You somehow manage to turn it completely around with just a smile, a word, or just by being there.</p>
+                <p><strong>Good day?</strong> Oh, you make it absolutely perfect. You take something that's already great and elevate it to extraordinary.</p>
+                <p>You're like magic, Mehul. Except you're real, and somehow that makes you even better than magic. ✨</p>`
+            },
+            {
+                theme: 'theme-green',
+                color: '#16a34a',
+                title: 'Game 4: Math Challenge',
+                instruction: 'Solve the equation!',
+                type: 'math',
+                problem: '8 + 7 =',
+                answer: 15,
+                photo: 'images/4.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Time for another spicy confession, and this one's really personal... 😊🔥</p>
+                <p>When you hug me, I try to memorize absolutely everything about that moment. <em>Everything.</em> Your scent, the warmth of your body against mine, the way your arms feel wrapped around me.</p>
+                <p>It's like my brain goes into this hyper-aware mode and thinks, "Okay, this is premium content right here. Don't you DARE waste a single second of this."</p>
+                <p>So yeah, I'm guilty of trying to memorize our hugs. But can you really blame me when they're this perfect? 😘💕</p>`
+            },
+            {
+                theme: 'theme-orange',
+                color: '#ea580c',
+                title: 'Game 5: Emoji Guess',
+                instruction: 'Which emoji represents our hugs?',
+                type: 'emoji',
+                question: 'Pick the emoji!',
+                emojis: ['👋', '🤗', '👍', '🤔'],
+                correct: 1,
+                photo: 'images/5.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Mehul, you're the kind of amazing that makes people stop in their tracks and genuinely wonder how you're even real.</p>
+                <p><strong>Your smile?</strong> It doesn't just light up a room – it transforms the entire atmosphere.</p>
+                <p><strong>Your laugh?</strong> Oh my god, your laugh is pure joy in audio form. It's contagious in the best possible way.</p>
+                <p>And here's the thing that absolutely blows my mind: I get to experience all of this. How incredibly lucky am I? 🌟💖</p>`
+            },
+            {
+                theme: 'theme-pink',
+                color: '#db2777',
+                title: 'Game 6: Slider Challenge',
+                instruction: 'Set the slider to exactly 100 (for 100% perfect)!',
+                type: 'slider',
+                target: 100,
+                photo: 'images/6.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>You know what should genuinely be illegal? How good your hugs feel. Seriously. 😏</p>
+                <p>There should be laws against something being <em>this</em> comforting, <em>this</em> perfect, <em>this</em> powerful.</p>
+                <p><strong>That's dangerous levels of comfort right there.</strong> It's like you have this superpower where you can just wrap your arms around me and BAM – instant serenity.</p>
+                <p>So yeah, your hugs should come with a warning label. But honestly? I'm completely okay with being addicted. 💖🔥</p>`
+            },
+            {
+                theme: 'theme-teal',
+                color: '#0d9488',
+                title: 'Game 7: True or False',
+                instruction: 'Answer the question!',
+                type: 'true-false',
+                question: 'Being close to you is the best feeling in the world',
+                answer: true,
+                photo: 'images/7.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Every single moment with you feels like the universe is giving me a gift and saying, "Here, have something truly extraordinary. You deserve this."</p>
+                <p><strong>But here's what really gets me:</strong> Being close to you is the absolute best feeling in the world. Not just good. Not just great. The <em>best</em>.</p>
+                <p>You make ordinary moments feel special. A random Tuesday becomes memorable just because you're there.</p>
+                <p>You have this gift, Mehul – this incredible ability to make life feel more vibrant, more meaningful. And being able to experience that? That's not just a privilege, it's pure magic. 💫💕</p>`
+            },
+            {
+                theme: 'theme-red',
+                color: '#dc2626',
+                title: 'Game 8: Pattern Match',
+                instruction: 'Recreate the heart pattern (diagonal)!',
+                type: 'pattern',
+                pattern: [0, 4, 8],
+                photo: 'images/8.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Little spicy reminder that I think about more than I probably should... 😊🔥</p>
+                <p><strong>Personal space is completely overrated anyway when it comes to us.</strong> Like, why would I ever want space between us when being close to you is literally the definition of perfection?</p>
+                <p>Think about it: Personal space is supposed to be this important thing, right? But with you? The closer the better. <em>Always.</em></p>
+                <p>So yeah, forget personal space. What we have is <strong>shared space</strong>, and it's infinitely better. Being close to you will always be my favorite place to be. 😘💖</p>`
+            },
+            {
+                theme: 'theme-indigo',
+                color: '#4f46e5',
+                title: 'Game 9: Complete the Phrase',
+                instruction: 'Fill in the blank!',
+                type: 'fill-blank',
+                phrase: 'Mehul makes ordinary moments feel _______',
+                options: ['normal', 'okay', 'magical', 'fine'],
+                correct: 2,
+                photo: 'images/9.jpg.jfif',      // ← YOUR EXACT FILE NAME
+                message: `<p>Mehul, you're the kind of person who makes ordinary moments feel absolutely special, and I think that's one of the most incredible things about you.</p>
+                <p><strong>A random Tuesday?</strong> Amazing, because you're there.</p>
+                <p><strong>A simple hug?</strong> Life-changing. What should be a basic human interaction becomes this profound moment of connection.</p>
+                <p>And the crazy thing? I don't think you even realize you're doing it. It's just who you are. You're naturally, effortlessly amazing. 💕✨</p>`
+            },
+            {
+                theme: 'theme-yellow',
+                color: '#ca8a04',
+                title: 'Game 10: Final Question',
+                instruction: 'One last question!',
+                type: 'final-question',
+                question: 'What would our hugs say if they could talk?',
+                choices: ['Hello', 'Goodbye', 'Things that would make us blush 😏', 'Nice weather'],
+                correct: 2,
+                photo: 'images/10.jpg.jfif',     // ← YOUR EXACT FILE NAME
+                message: `<p>Alright, final spicy thought, and this one's my favorite... 😏❤️🔥</p>
+                <p>If hugs could talk, ours would probably be saying things that would make us both blush <em>hard</em>. Like, seriously crimson-red-cheeks level of blushing.</p>
+                <p>But here's the beautiful thing: <strong>They don't need words.</strong> Our hugs say everything perfectly without a single syllable.</p>
+                <p>That's the magic of what we have, Mehul. We've created this language that's just ours – a language of closeness, of touch, of presence.</p>
+                <p>So on this Hug Day, and every day after, I want you to remember: <strong>You're incredible.</strong> You're special. You're amazing in ways that go beyond what words can capture. 😘💖✨</p>`
+            }
+        ];
+
+        // ============ GLOBAL VARIABLES ============
+        let currentGame = 0;
+        let memoryCards = [];
+        let memoryFlipped = [];
+        let memoryMatched = [];
+        let userPatternArray = [];
+        let canFlip = true;
+
+        // ============ GAME FLOW ============
+        function startGames() {
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('gameScreen').style.display = 'block';
+            currentGame = 0;
+            loadGame();
+            startMusicOnInteraction();
+        }
+
+        function loadGame() {
+            if (currentGame >= games.length) {
+                showFinal();
+                return;
+            }
+
+            const game = games[currentGame];
+            document.body.className = game.theme;
+            document.getElementById('gameTitle').textContent = game.title;
+            document.getElementById('gameTitle').style.color = game.color;
+            document.getElementById('gameInstruction').textContent = game.instruction;
+            document.getElementById('gameInstruction').style.color = game.color;
+            document.getElementById('gameArea').innerHTML = '';
+            document.getElementById('messageReveal').classList.remove('show');
+            document.getElementById('progressFill').style.background = game.color;
+            document.getElementById('progressFill').style.width = ((currentGame) / games.length * 100) + '%';
+            document.getElementById('musicControl').style.color = game.color;
+            document.getElementById('inlineHint').style.display = 'none';
+            
+            memoryFlipped = [];
+            memoryMatched = [];
+            userPatternArray = [];
+            canFlip = true;
+
+            switch(game.type) {
+                case 'word-scramble': createWordScramble(game); break;
+                case 'multiple-choice': createMultipleChoice(game); break;
+                case 'memory': createMemoryGame(game); break;
+                case 'math': createMathGame(game); break;
+                case 'emoji': createEmojiGame(game); break;
+                case 'slider': createSliderGame(game); break;
+                case 'true-false': createTrueFalse(game); break;
+                case 'pattern': createPatternGame(game); break;
+                case 'fill-blank': createFillBlank(game); break;
+                case 'final-question': createFinalQuestion(game); break;
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentGame + 1) / games.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // ============ GAME 1 ============
+        function createWordScramble(game) {
+            const area = document.getElementById('gameArea');
+            area.innerHTML = `
+                <div class="word-scramble-word" style="color: ${game.color}">${game.scrambled}</div>
+                <input type="text" class="guess-input" style="border-color: ${game.color}" placeholder="Type your answer" id="wordInput" autocomplete="off">
+                <button class="submit-btn" style="background: ${game.color}" onclick="checkWordScramble()">Submit</button>
+            `;
+            document.getElementById('wordInput').focus();
+        }
+
+        function checkWordScramble() {
+            const game = games[currentGame];
+            const input = document.getElementById('wordInput').value.toUpperCase().trim();
+            if (input === game.answer) {
+                revealMessage();
+            } else {
+                const inputField = document.getElementById('wordInput');
+                inputField.value = '';
+                inputField.placeholder = 'Try again! 💕';
+                inputField.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    inputField.style.animation = '';
+                    inputField.placeholder = 'Type your answer';
+                }, 500);
+            }
+        }
+
+        // ============ GAME 2 & 10 ============
+        function createMultipleChoice(game) {
+            const area = document.getElementById('gameArea');
+            let html = `<div style="font-size: 1.6rem; margin-bottom: 35px; color: ${game.color};">${game.question}</div><div class="choice-grid">`;
+            game.choices.forEach((choice, i) => {
+                html += `<button class="choice-btn" style="border-color: ${game.color}; color: ${game.color}" onclick="checkMultipleChoice(${i})">${choice}</button>`;
+            });
+            html += '</div>';
+            area.innerHTML = html;
+        }
+
+        function createFinalQuestion(game) {
+            createMultipleChoice(game);
+        }
+
+        function checkMultipleChoice(index) {
+            const game = games[currentGame];
+            const buttons = document.querySelectorAll('.choice-btn');
+            
+            if (index === game.correct) {
+                buttons[index].classList.add('correct');
+                setTimeout(revealMessage, 800);
+            } else {
+                buttons[index].classList.add('wrong');
+                setTimeout(() => buttons[index].classList.remove('wrong'), 600);
+            }
+        }
+
+        // ============ GAME 3 ============
+        function createMemoryGame(game) {
+            const area = document.getElementById('gameArea');
+            memoryCards = [...game.pairs, ...game.pairs].sort(() => Math.random() - 0.5);
+            memoryFlipped = [];
+            memoryMatched = [];
+            canFlip = true;
+            
+            let html = '<div class="memory-grid">';
+            memoryCards.forEach((card, i) => {
+                html += `<div class="memory-card" style="background: ${game.color}" data-index="${i}" onclick="flipCard(${i})">?</div>`;
+            });
+            html += '</div>';
+            area.innerHTML = html;
+        }
+
+        function flipCard(index) {
+            if (!canFlip) return;
+            if (memoryFlipped.includes(index) || memoryMatched.includes(index)) return;
+            if (memoryFlipped.length >= 2) return;
+            
+            const cards = document.querySelectorAll('.memory-card');
+            
+            cards[index].classList.add('flipped');
+            cards[index].textContent = memoryCards[index];
+            memoryFlipped.push(index);
+            
+            if (memoryFlipped.length === 2) {
+                canFlip = false;
+                setTimeout(() => {
+                    const [first, second] = memoryFlipped;
+                    if (memoryCards[first] === memoryCards[second]) {
+                        cards[first].classList.add('matched');
+                        cards[second].classList.add('matched');
+                        memoryMatched.push(first, second);
+                        memoryFlipped = [];
+                        canFlip = true;
+                        
+                        if (memoryMatched.length === memoryCards.length) {
+                            setTimeout(revealMessage, 600);
+                        }
+                    } else {
+                        cards[first].classList.remove('flipped');
+                        cards[second].classList.remove('flipped');
+                        cards[first].textContent = '?';
+                        cards[second].textContent = '?';
+                        memoryFlipped = [];
+                        canFlip = true;
+                    }
+                }, 800);
+            }
+        }
+
+        // ============ GAME 4 ============
+        function createMathGame(game) {
+            const area = document.getElementById('gameArea');
+            area.innerHTML = `
+                <div class="math-problem" style="color: ${game.color}">${game.problem}</div>
+                <input type="number" class="guess-input" style="border-color: ${game.color}" placeholder="Answer" id="mathInput" autocomplete="off">
+                <button class="submit-btn" style="background: ${game.color}" onclick="checkMath()">Submit</button>
+            `;
+            document.getElementById('mathInput').focus();
+        }
+
+        function checkMath() {
+            const game = games[currentGame];
+            const input = parseInt(document.getElementById('mathInput').value);
+            if (input === game.answer) {
+                revealMessage();
+            } else {
+                const inputField = document.getElementById('mathInput');
+                inputField.value = '';
+                inputField.placeholder = 'Try again! 💕';
+                inputField.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    inputField.style.animation = '';
+                    inputField.placeholder = 'Answer';
+                }, 500);
+            }
+        }
+
+        // ============ GAME 5 ============
+        function createEmojiGame(game) {
+            const area = document.getElementById('gameArea');
+            let html = `<div style="font-size: 1.6rem; margin-bottom: 35px; color: ${game.color};">${game.question}</div><div class="emoji-options">`;
+            game.emojis.forEach((emoji, i) => {
+                html += `<div class="emoji-btn" style="border-color: ${game.color}" onclick="checkEmoji(${i}, this)">${emoji}</div>`;
+            });
+            html += '</div>';
+            area.innerHTML = html;
+        }
+
+        function checkEmoji(index, element) {
+            const game = games[currentGame];
+            if (index === game.correct) {
+                element.style.background = game.color;
+                element.style.color = 'white';
+                setTimeout(revealMessage, 500);
+            } else {
+                element.classList.add('wrong-emoji');
+                setTimeout(() => element.classList.remove('wrong-emoji'), 500);
+            }
+        }
+
+        // ============ GAME 6 ============
+        function createSliderGame(game) {
+            const area = document.getElementById('gameArea');
+            area.innerHTML = `
+                <div class="slider-container">
+                    <div class="slider-value" style="color: ${game.color}" id="sliderValue">50</div>
+                    <input type="range" min="0" max="100" value="50" class="slider" style="background: ${game.color}33" id="sliderInput" oninput="updateSlider()">
+                    <button class="submit-btn" style="background: ${game.color}; margin-top: 20px;" onclick="checkSlider()">Lock It In!</button>
+                    <div id="sliderHint" style="color: ${game.color}; margin-top: 15px; min-height: 30px;"></div>
+                </div>
+            `;
+        }
+
+        function updateSlider() {
+            document.getElementById('sliderValue').textContent = document.getElementById('sliderInput').value;
+        }
+
+        function checkSlider() {
+            const game = games[currentGame];
+            const value = parseInt(document.getElementById('sliderInput').value);
+            const hint = document.getElementById('sliderHint');
+            
+            if (value === game.target) {
+                hint.innerHTML = '🎯 Perfect! 100% just like you!';
+                hint.style.color = '#22c55e';
+                setTimeout(revealMessage, 800);
+            } else {
+                const diff = Math.abs(value - game.target);
+                if (diff > 20) hint.innerHTML = 'Not quite! Try to get exactly 100! 💕';
+                else if (diff > 10) hint.innerHTML = 'Getting closer! You can do it! ✨';
+                else hint.innerHTML = 'So close! Just a little more! 🎯';
+                hint.style.color = game.color;
+            }
+        }
+
+        // ============ GAME 7 ============
+        function createTrueFalse(game) {
+            const area = document.getElementById('gameArea');
+            area.innerHTML = `
+                <div style="font-size: 1.6rem; margin-bottom: 35px; color: ${game.color};">${game.question}</div>
+                <div class="choice-grid">
+                    <button class="choice-btn" style="border-color: ${game.color}; color: ${game.color}" onclick="checkTrueFalse(true, this)">TRUE ✓</button>
+                    <button class="choice-btn" style="border-color: ${game.color}; color: ${game.color}" onclick="checkTrueFalse(false, this)">FALSE ✗</button>
+                </div>
+                <div id="tfHint" style="margin-top: 20px; min-height: 30px;"></div>
+            `;
+        }
+
+        function checkTrueFalse(answer, btn) {
+            const game = games[currentGame];
+            const hint = document.getElementById('tfHint');
+            
+            if (answer === game.answer) {
+                btn.classList.add('correct');
+                hint.innerHTML = '✓ Absolutely right! Being close to you IS the best feeling! 💕';
+                hint.style.color = '#22c55e';
+                setTimeout(revealMessage, 800);
+            } else {
+                btn.classList.add('wrong');
+                hint.innerHTML = '✗ Think again... being close to you is actually AMAZING! 😊';
+                hint.style.color = '#ef4444';
+                setTimeout(() => btn.classList.remove('wrong'), 600);
+            }
+        }
+
+        // ============ GAME 8 ============
+        function createPatternGame(game) {
+            userPatternArray = [];
+            const area = document.getElementById('gameArea');
+            let html = '<div style="margin-bottom: 25px; color: ' + game.color + '; font-size: 1.2rem;">Click the squares to match the diagonal heart pattern:</div>';
+            html += '<div class="pattern-grid" style="margin-bottom: 25px;">';
+            
+            for (let i = 0; i < 9; i++) {
+                const isActive = game.pattern.includes(i);
+                html += `<div class="pattern-square ${isActive ? 'active' : ''}" style="border-color: ${game.color}; ${isActive ? 'background: ' + game.color : ''}"></div>`;
+            }
+            
+            html += '</div><div style="margin-bottom: 15px; color: ' + game.color + ';">Your pattern:</div><div class="pattern-grid" id="userPattern">';
+            
+            for (let i = 0; i < 9; i++) {
+                html += `<div class="pattern-square" style="border-color: ${game.color}" data-index="${i}" onclick="togglePattern(${i})"></div>`;
+            }
+            
+            html += '</div><button class="submit-btn" style="background: ' + game.color + '; margin-top: 25px" onclick="checkPattern()">Check Pattern</button>';
+            html += '<div id="patternHint" style="margin-top: 15px; color: ' + game.color + ';"></div>';
+            area.innerHTML = html;
+        }
+
+        function togglePattern(index) {
+            const square = document.querySelectorAll('#userPattern .pattern-square')[index];
+            const game = games[currentGame];
+            
+            if (userPatternArray.includes(index)) {
+                userPatternArray = userPatternArray.filter(i => i !== index);
+                square.classList.remove('active');
+                square.style.background = '';
+            } else {
+                userPatternArray.push(index);
+                square.classList.add('active');
+                square.style.background = game.color;
+            }
+        }
+
+        function checkPattern() {
+            const game = games[currentGame];
+            const hint = document.getElementById('patternHint');
+            const sortedUser = [...userPatternArray].sort((a, b) => a - b);
+            const sortedCorrect = [...game.pattern].sort((a, b) => a - b);
+            
+            if (JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect)) {
+                hint.innerHTML = '✅ Perfect pattern! You got it!';
+                hint.style.color = '#22c55e';
+                setTimeout(revealMessage, 800);
+            } else {
+                hint.innerHTML = '❌ Not quite the diagonal pattern. Try again! 💕';
+                userPatternArray = [];
+                document.querySelectorAll('#userPattern .pattern-square').forEach(sq => {
+                    sq.classList.remove('active');
+                    sq.style.background = '';
+                });
+            }
+        }
+
+        // ============ GAME 9 ============
+        function createFillBlank(game) {
+            const area = document.getElementById('gameArea');
+            let html = `<div style="font-size: 1.6rem; margin-bottom: 35px; color: ${game.color};">${game.phrase}</div><div class="choice-grid">`;
+            game.options.forEach((option, i) => {
+                html += `<button class="choice-btn" style="border-color: ${game.color}; color: ${game.color}" onclick="checkFillBlank(${i}, this)">${option}</button>`;
+            });
+            html += '</div>';
+            area.innerHTML = html;
+        }
+
+        function checkFillBlank(index, btn) {
+            const game = games[currentGame];
+            if (index === game.correct) {
+                btn.classList.add('correct');
+                setTimeout(revealMessage, 800);
+            } else {
+                btn.classList.add('wrong');
+                setTimeout(() => btn.classList.remove('wrong'), 600);
+            }
+        }
+
+        // ============ REVEAL MESSAGE WITH YOUR PHOTOS ============
+        function revealMessage() {
+            const game = games[currentGame];
+            
+            // Load your photo with your exact file name
+            const messageImage = document.getElementById('messageImage');
+            messageImage.src = game.photo;  // e.g., 'images/2.jpg.jfif'
+            messageImage.alt = `Memory ${currentGame + 1} 💕`;
+            
+            // If photo doesn't exist yet, show fallback
+            messageImage.onerror = function() {
+                this.src = '';
+                this.innerHTML = '📸';  // Emoji fallback
+                this.style.background = `linear-gradient(145deg, ${game.color}, ${game.color}dd)`;
+                this.style.display = 'flex';
+                this.style.fontSize = '5rem';
+                this.style.color = 'white';
+            };
+            
+            document.getElementById('messageText').innerHTML = game.message;
+            document.getElementById('messageReveal').classList.add('show');
+            
+            const nextBtn = document.querySelector('.next-game-btn');
+            nextBtn.style.background = game.color;
+            
+            setTimeout(() => {
+                document.getElementById('messageReveal').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function nextGame() {
+            currentGame++;
+            updateProgress();
+            loadGame();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============ FINAL SCREEN WITH YOUR FINAL PHOTO ============
+        function showFinal() {
+            document.getElementById('gameScreen').style.display = 'none';
+            document.getElementById('finalScreen').style.display = 'block';
+            document.body.className = 'theme-rose';
+            
+            // Load your final photo with your exact file name
+            const finalPhoto = document.getElementById('finalPhoto');
+            finalPhoto.src = 'images/final.jpg.jfif';  // ← YOUR EXACT FILE NAME
+            finalPhoto.alt = 'Us 💕';
+            document.getElementById('photoCaption').innerHTML = '🤗 My favorite place to be';
+            
+            // Fallback if photo doesn't exist yet
+            finalPhoto.onerror = function() {
+                this.src = '';
+                this.outerHTML = '<div style="max-width: 450px; width: 100%; margin: 0 auto; background: linear-gradient(145deg, #f43f5e, #fb7185); border-radius: 25px; padding: 60px; font-size: 8rem; color: white; box-shadow: 0 20px 50px rgba(0,0,0,0.25);">🤗 💕</div>';
+                document.getElementById('photoCaption').innerHTML = 'You + Me = 💕';
+            };
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#fb7185', '#f43f5e', '#e11d48', '#fda4af', '#fecdd3', '#9333ea', '#2563eb', '#16a34a'];
+            const shapes = ['●', '■', '▲', '★', '♥'];
+            
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -20 + 'px';
+                    confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 20);
+            }
+        }
+
+        // Keyboard shortcut for music
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'm' || e.key === 'M') {
+                toggleMusic();
+            }
+        });
+
+        console.log('✅ Using folder: /images/');
+        console.log('✅ Using file names: 1.jpg.jfif, 2.jpg.jfif, ..., final.jpg.jfif');
+    </script>
+</body>
+</html>
